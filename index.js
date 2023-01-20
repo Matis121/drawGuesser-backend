@@ -24,11 +24,15 @@ mongoconn();
 // Routers
 const userRouter = require("./User/UserRouter");
 
+//cors options
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+
 // middlewares
-app.use(cors({
-  origin: "https://drawguesser-frontend.onrender.com",
-  credentials: true
-}));
+app.use(cors(corsOptions));
 app.use(express.json());
 
 io.on("connection", (socket) => {
